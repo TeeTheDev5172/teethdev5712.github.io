@@ -184,7 +184,7 @@
             <p>Do you want some educational activities? Scroll down to find more!</p>
         </section>
         <div class="buttons">
-            <div class="button" id="game1" onclick="displayGameInfo('3D Runner V1, very buggy', 'This is a 3D runner game. It may have some bugs, but it\'s still fun! Click the button below to play.', 'https://example.com/game1')">
+            <div class="button" id="game1" onclick="displayGameInfo('3D Runner V1, very buggy', 'This is a 3D runner game. It may have some bugs, but it\'s still fun! Click the button below to play.', 'https://teethedev5172.github.io/thomaslearning/3Drunner.html')">
                 <img src="3dRun.png" alt="Game 1 Icon">
                 <div class="button-text">3D Runner</div>
             </div>
@@ -225,7 +225,7 @@
             titleElement.textContent = title;
             descriptionElement.textContent = description;
             document.getElementById("playButton").onclick = function() {
-                window.open(gameUrl, "_blank");
+                window.location.href = gameUrl; // Redirect to the 3Drunner.html page on GitHub Pages
             };
             modal.style.display = "block";
         }
@@ -238,4 +238,3 @@
     </script>
 </body>
 </html>
-
