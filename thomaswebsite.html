@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas's Website Of Learning!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Fonts */
+        body {
+            font-family: 'Silkscreen', cursive;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(90deg, #cfd9df 0%, #e2ebf0 100%);
+            color: #333;
+            cursor: url('cursor.png'), auto;
+        }
+        /* Header */
+        header {
+            background: #005a87;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease;
+        }
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        /* Main Content */
+        main {
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column; /* Changed to column to ensure content displays properly */
+            align-items: center;
+            min-height: 100vh; /* Ensure the main content fills the viewport height */
+            transition: background-color 0.5s ease; /* Transition for background color change */
+            background-image: url('background.png');
+            background-size: cover;
+            background-attachment: fixed;
+            animation: fadeInBackground 2s infinite alternate;
+            scroll-behavior: smooth;
+        }
+        @keyframes fadeInBackground {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 40px; /* Added margin bottom to separate section from buttons */
+            transition: transform 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-10px);
+        }
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #005a87;
+        }
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #666;
+        }
+        /* Footer */
+        footer {
+            background: #002f4b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        footer:hover {
+            background: #001f2b;
+        }
+        footer p {
+            font-size: 0.9em;
+        }
+        /* Buttons */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to the start to allow scrolling */
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .button {
+            width: 120px;
+            height: 120px;
+            margin: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .button img {
+            max-width: 50%; /* Changed to make the icon smaller */
+            height: auto;
+        }
+        .button-text {
+            margin-top: 10px;
+            font-size: 1.1em;
+            text-align: center;
+            color: #ffffff;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 20% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Thomas's Website Of Learning!</h1>
+    </header>
+    <main>
+        <section class="section">
+            <h2>Hi, I'm Thomas, here to help!</h2>
+            <p>Do you want some educational activities? Scroll down to find more!</p>
+        </section>
+        <div class="buttons">
+            <div class="button" id="game1" onclick="displayGameInfo('3D Runner V1, very buggy', 'This is a 3D runner game. It may have some bugs, but it\'s still fun! Click the button below to play.', 'https://example.com/game1')">
+                <img src="3dRun.png" alt="Game 1 Icon">
+                <div class="button-text">3D Runner</div>
+            </div>
+            <div class="button" id="game2" onclick="displayGameInfo('Maze Of Deadly Dreams', 'A infinite maze horror game where you run as long as possible.', 'https://example.com/game2')">
+                <img src="game2-icon.png" alt="Game 2 Icon">
+                <div class="button-text">Maze Of Deadly Dreams</div>
+            </div>
+            <div class="button" id="game3" onclick="displayGameInfo('Example Game 3', 'Description of Example Game 3', 'https://example.com/game3')">
+                <img src="game3-icon.png" alt="Game 3 Icon">
+                <div class="button-text">Example Game 3</div>
+            </div>
+            <div class="button" id="game4" onclick="displayGameInfo('Example Game 4', 'Description of Example Game 4', 'https://example.com/game4')">
+                <img src="game4-icon.png" alt="Game 4 Icon">
+                <div class="button-text">Example Game 4</div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Thomas's Learning Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="gameTitle"></h2>
+            <p id="gameDescription"></p>
+            <button id="playButton">Play</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to display game information in modal
+        function displayGameInfo(title, description, gameUrl) {
+            var modal = document.getElementById("gameModal");
+            var titleElement = document.getElementById("gameTitle");
+            var descriptionElement = document.getElementById("gameDescription");
+            titleElement.textContent = title;
+            descriptionElement.textContent = description;
+            document.getElementById("playButton").onclick = function() {
+                window.open(gameUrl, "_blank");
+            };
+            modal.style.display = "block";
+        }
+
+        // Function to close modal
+        function closeModal() {
+            var modal = document.getElementById("gameModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
