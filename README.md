@@ -1,2 +1,5 @@
 # teethdev5712.github.io
-Math site learning for teachers
+
+Educatitonal website made for schools!
+
+Many **educational** activites!
