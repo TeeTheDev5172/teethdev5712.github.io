@@ -7,11 +7,15 @@ if (!gl) {
     console.error('WebGL not supported');
 }
 
+// Make canvas fullscreen
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 // Define vertex and fragment shader source code
 const vertexShaderSource = `
-    attribute vec3 aPosition;
+    attribute vec2 aPosition;
     void main() {
-        gl_Position = vec4(aPosition, 1.0);
+        gl_Position = vec4(aPosition, 0.0, 1.0);
     }
 `;
 
@@ -52,9 +56,9 @@ gl.useProgram(shaderProgram);
 
 // Define vertex data
 const vertices = [
-    -0.5, -0.5, 0.0,
-    0.5, -0.5, 0.0,
-    0.0, 0.5, 0.0
+    -0.05, -0.05,
+    0.05, -0.05,
+    0.0, 0.05
 ];
 const vertexBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -62,7 +66,7 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 
 // Get attribute location and enable it
 const aPosition = gl.getAttribLocation(shaderProgram, 'aPosition');
-gl.vertexAttribPointer(aPosition, 3, gl.FLOAT, false, 0, 0);
+gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
 gl.enableVertexAttribArray(aPosition);
 
 // Main render loop
@@ -75,25 +79,3 @@ function render() {
     requestAnimationFrame(render);
 }
 render();
-
-// Keyboard input handling
-document.addEventListener('keydown', (event) => {
-    const key = event.key.toLowerCase();
-    switch (key) {
-        case 'w':
-            // Move forward
-            break;
-        case 's':
-            // Move backward
-            break;
-        case 'a':
-            // Strafe left
-            break;
-        case 'd':
-            // Strafe right
-            break;
-        default:
-            break;
-    }
-});
-
